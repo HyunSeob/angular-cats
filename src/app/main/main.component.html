@@ -1,3 +1,5 @@
 <div *ngFor="let catImage of catImages">
-  <img src="{{catImage.url}}" width="{{catImage.width}}" height="{{catImage.height}}" />
+  <a [routerLink]="[catImage.id]">
+    <img src="{{catImage.url}}" width="{{catImage.width}}" height="{{catImage.height}}" />
+  </a>
 </div>

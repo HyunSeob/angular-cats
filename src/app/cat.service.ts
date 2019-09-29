@@ -29,4 +29,16 @@ export class CatService {
         }),
       );
   }
+
+  getImage(id: string) {
+    return this.http
+      .get(`${apiUrl}/images/${id}`, {
+        headers: httpHeaders,
+      })
+      .pipe(
+        map((image: CatImage) => {
+          return new CatImage().deserialize(image);
+        }),
+      );
+  }
 }
