@@ -8,11 +8,40 @@ const httpHeaders = new HttpHeaders({
   'x-api-key': '63233e58-83e2-4b0b-b9db-6d13eba94a5',
 });
 
+const imagesPerPage = 10;
+
 @Injectable({
   providedIn: 'root',
 })
 export class CatService {
+  imageRecord: Record<string, CatImage> = {};
+
   constructor(private http: HttpClient) {}
+
+  fetchImages() {
+    this.http
+      .get(`${apiUrl}/images/search`, {
+        headers: httpHeaders,
+        params: {
+          limit: String(imagesPerPage),
+          page: String(this.images.length / imagesPerPage),
+        },
+      })
+      .pipe(
+        map((images: CatImage[]) => {
+          return images.map(image => new CatImage().deserialize(image));
+        }),
+      )
+      .subscribe(images => {
+        images.forEach(image => {
+          this.imageRecord[image.id] = image;
+        });
+      });
+  }
+
+  get images() {
+    return Object.values(this.imageRecord);
+  }
 
   getImages() {
     return this.http
