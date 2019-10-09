@@ -1,3 +1,6 @@
-<div *ngIf="catImage">
-  <img src="{{catImage.url}}" width="{{catImage.width}}" height="{{catImage.height}}" />
+<div *ngIf="catImage" class="cat-container">
+  <figure>
+    <img class="cat-image" src="{{catImage.url}}" width="{{catImage.width}}"
+      height="{{catImage.height}}" />
+  </figure>
 </div>
