@@ -1,0 +1,13 @@
+<nav class="menu">
+  <ul class="menu-list">
+    <li>
+      <a class="menu-link" routerLink="/all" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">Main</a>
+    </li>
+    <li *ngFor="let catCategory of catCategories">
+      <a class="menu-link" routerLink="{{catCategory.name}}-{{catCategory.id}}"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">{{catCategory.name | titlecase}}</a>
+    </li>
+  </ul>
+</nav>

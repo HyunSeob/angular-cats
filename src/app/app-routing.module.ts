@@ -6,11 +6,16 @@ import { CatComponent } from './cat/cat.component';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'all',
+    pathMatch: 'full',
+  },
+  {
+    path: ':category',
     component: MainComponent,
     pathMatch: 'full',
   },
   {
-    path: ':cat-id',
+    path: 'cats/:cat-id',
     component: CatComponent,
   },
 ];

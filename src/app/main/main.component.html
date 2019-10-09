@@ -1,6 +1,6 @@
 <div class="grid-container">
   <figure *ngFor="let catImage of catImages">
-    <a [routerLink]="[catImage.id]">
+    <a [routerLink]="['/cats', catImage.id]">
       <img class="grid-image" src="{{catImage.url}}" width="{{catImage.width}}"
         height="{{catImage.height}}" />
     </a>

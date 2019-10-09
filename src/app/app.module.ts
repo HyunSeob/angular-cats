@@ -7,9 +7,10 @@ import { MainComponent } from './main/main.component';
 import { CatComponent } from './cat/cat.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ScrollObserverComponent } from './scroll-observer/scroll-observer.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, CatComponent, ScrollObserverComponent],
+  declarations: [AppComponent, MainComponent, CatComponent, ScrollObserverComponent, MenuComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
