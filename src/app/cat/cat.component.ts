@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CatImage } from '../models/cat-image.model';
 import { CatService } from '../cat.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,15 +8,21 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./cat.component.scss'],
 })
 export class CatComponent implements OnInit {
-  catImage: CatImage | null = null;
-
   constructor(private route: ActivatedRoute, private catService: CatService) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('cat-id');
+    if (this.catImage !== undefined) {
+      return;
+    }
 
-    this.catService.getImage(id).subscribe(catImage => {
-      this.catImage = catImage;
-    });
+    this.catService.fetchImage(this.catId);
+  }
+
+  get catId() {
+    return this.route.snapshot.paramMap.get('cat-id');
+  }
+
+  get catImage() {
+    return this.catService.getImage(this.catId);
   }
 }

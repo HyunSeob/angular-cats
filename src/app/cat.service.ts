@@ -39,6 +39,21 @@ export class CatService {
       });
   }
 
+  fetchImage(id: string) {
+    return this.http
+      .get(`${apiUrl}/images/${id}`, {
+        headers: httpHeaders,
+      })
+      .pipe(
+        map((image: CatImage) => {
+          return new CatImage().deserialize(image);
+        }),
+      )
+      .forEach(image => {
+        this.imageRecord[image.id] = image;
+      });
+  }
+
   get images() {
     return Object.values(this.imageRecord);
   }
@@ -60,14 +75,6 @@ export class CatService {
   }
 
   getImage(id: string) {
-    return this.http
-      .get(`${apiUrl}/images/${id}`, {
-        headers: httpHeaders,
-      })
-      .pipe(
-        map((image: CatImage) => {
-          return new CatImage().deserialize(image);
-        }),
-      );
+    return this.imageRecord[id];
   }
 }
