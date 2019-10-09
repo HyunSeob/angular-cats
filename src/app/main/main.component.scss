@@ -2,10 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 400px));
   grid-gap: 12px;
-
-  & > figure {
-    margin: 0;
-  }
+  justify-content: center;
 }
 
 .grid-image {
